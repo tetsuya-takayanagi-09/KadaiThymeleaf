@@ -11,7 +11,9 @@ public class InputController {
 
     @GetMapping("/input")
     public String getForm(@RequestParam(value="previous", required=false) String previous, Model model) {
-        model.addAttribute("previous", previous);
+        if (previous != null && !previous.isEmpty()) {
+            model.addAttribute("previous", previous);
+        }
         return "input";
     }
 
